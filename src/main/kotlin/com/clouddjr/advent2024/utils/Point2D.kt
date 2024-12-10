@@ -7,6 +7,14 @@ data class Point2D(val x: Int, val y: Int) {
     operator fun minus(other: Point2D) =
         Point2D(x - other.x, y - other.y)
 
+    fun neighbours() =
+        listOf(
+            Point2D(x - 1, y),
+            Point2D(x + 1, y),
+            Point2D(x, y - 1),
+            Point2D(x, y + 1),
+        )
+
     fun turnedRight() =
         when (this) {
             UP -> RIGHT
