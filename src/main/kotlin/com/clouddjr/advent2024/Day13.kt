@@ -21,7 +21,7 @@ class Day13(input: List<String>) {
         }
 
         companion object {
-            fun from(lines: List<String>): Claw =
+            fun from(lines: List<String>) =
                 Claw(
                     ax = lines[0].substringAfter("X+").substringBefore(",").toInt(),
                     ay = lines[0].substringAfter("Y+").toInt(),
