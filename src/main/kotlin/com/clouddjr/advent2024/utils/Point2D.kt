@@ -24,6 +24,15 @@ data class Point2D(val x: Int, val y: Int) {
             else -> error("Invalid direction: $this")
         }
 
+    fun turnedLeft() =
+        when (this) {
+            UP -> LEFT
+            RIGHT -> UP
+            DOWN -> RIGHT
+            LEFT -> DOWN
+            else -> error("Invalid direction: $this")
+        }
+
     companion object {
         val UP = Point2D(0, -1)
         val RIGHT = Point2D(1, 0)
