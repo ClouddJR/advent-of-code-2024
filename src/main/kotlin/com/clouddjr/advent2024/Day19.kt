@@ -14,7 +14,7 @@ class Day19(input: List<String>) {
 
         indices.reversed().forEach { i ->
             towels.forEach { towel ->
-                if (substring(i).startsWith(towel)) {
+                if (startsWith(towel, i)) {
                     options[i] += options[i + towel.length]
                 }
             }
