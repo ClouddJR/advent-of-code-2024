@@ -10,18 +10,16 @@ class Day19(input: List<String>) {
     fun solvePart2() = designs.sumOf { it.countOptions() }
 
     private fun String.countOptions(): Long {
-        val cache = mutableMapOf<Int, Long>()
+        val options = LongArray(length + 1).apply { this[length] = 1 }
 
-        fun options(i: Int): Long =
-            when {
-                i == length -> 1
-                else -> cache.getOrPut(i) {
-                    towels.sumOf { towel ->
-                        if (substring(i).startsWith(towel)) options(i + towel.length) else 0
-                    }
+        indices.reversed().forEach { i ->
+            towels.forEach { towel ->
+                if (substring(i).startsWith(towel)) {
+                    options[i] += options[i + towel.length]
                 }
             }
+        }
 
-        return options(0)
+        return options.first()
     }
 }
