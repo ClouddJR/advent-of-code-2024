@@ -1,11 +1,16 @@
 package com.clouddjr.advent2024.utils
 
+import kotlin.math.abs
+
 data class Point2D(val x: Int, val y: Int) {
     operator fun plus(other: Point2D) =
         Point2D(x + other.x, y + other.y)
 
     operator fun minus(other: Point2D) =
         Point2D(x - other.x, y - other.y)
+
+    infix fun distanceTo(other: Point2D) =
+        abs(x - other.x) + abs(y - other.y)
 
     fun neighbours() =
         listOf(
